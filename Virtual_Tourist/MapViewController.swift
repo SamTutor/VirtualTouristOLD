@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapViewDelegate  {
     
@@ -20,7 +21,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
     @IBOutlet weak var deletePin: UIBarButtonItem!
     @IBOutlet weak var deleteMessage: UILabel!
     
-    
     let deletePinsMessage = "TAP ON PIN(S) TO DELETE"
     let addPinsMessage = "PRESS ON MAP TO ADD PINS"
     
@@ -31,6 +31,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
   
     var mapState: String = "Add"
 
+    
+    
+    //CORE DATA: Convenience. Useful for fetching, adding, and saving objects
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
     
     
     
@@ -53,14 +60,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
         self.mapView.showsUserLocation = true
         self.mapView.showsPointsOfInterest = true
         self.mapView.delegate = self
+        
+        self.mapView.addAnnotations(fetchAllPins())
     }// END OF FUNC
     
     
+    
+    /**
+     * This is the convenience method for fetching all persistent pins
+     * The method creates a "Fetch Request" and then executes the request on
+     * the shared context.
+     */
+    
+    //CORE DATE: FUNC fetchAllPins()
+    func fetchAllPins() -> [Pin] {
+        
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "Pin")
+        
+        // Execute the Fetch Request
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as! [Pin]
+            
+        } catch let error as NSError {
+            
+            print("Error in fetchAllPins(): \(error)")
+            return [Pin]()
+        }
+    }// END OF FUNC
 
+    
+    
     // FUNC: longPressGresture(): Add Gesture Recognizers to the mapView
     func longPressGesture() {
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.longPressAction))
-        longpress.minimumPressDuration = 0.2
+        longpress.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longpress)
     }// END OF FUNC
     
@@ -97,7 +131,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
                 annotations.subtitle = myPinAddress
             }
         }
-        mapView.addAnnotation(annotations)
+        self.mapView.addAnnotation(annotations)
     }// END OF FUNC
     
     

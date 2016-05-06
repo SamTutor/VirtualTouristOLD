@@ -13,6 +13,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="s7U-q9-Bn0">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ZpN-fW-uhB" kind="relationship" relationship="rootViewController" id="PAg-EQ-Kje"/>
                     </connections>
@@ -93,13 +97,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UMA-dF-5TL">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UMA-dF-5TL">
                                 <rect key="frame" x="0.0" y="20" width="600" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ug8-Vz-F5Z"/>
+                                </constraints>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GyD-E3-GnA">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4jH-jg-ZA6"/>
+                                    <barButtonItem title="New Collection" id="2EH-ki-3c1"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gLS-LU-Zgy"/>
+                                </items>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="odP-5O-DQh">
+                                <rect key="frame" x="0.0" y="219" width="600" height="337"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bEd-xJ-ZXz">
+                                    <size key="itemSize" width="170" height="152"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pincell" id="KoB-nv-VUN" customClass="PinPhotoCollectionViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="152"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="152"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rpc-fW-cAI">
+                                                    <rect key="frame" x="8" y="8" width="154" height="114"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuL-0c-qRo">
+                                                    <rect key="frame" x="8" y="123" width="154" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="pinLabel" destination="HuL-0c-qRo" id="c6k-kW-LNy"/>
+                                            <outlet property="pinPhoto" destination="Rpc-fW-cAI" id="Xnb-yf-9m6"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="z6a-TI-J6I" id="1Jl-h3-AAh"/>
+                                    <outlet property="delegate" destination="z6a-TI-J6I" id="rBo-gE-oeB"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UMA-dF-5TL" firstAttribute="trailing" secondItem="odP-5O-DQh" secondAttribute="trailing" id="7pu-HT-D8T"/>
+                            <constraint firstItem="odP-5O-DQh" firstAttribute="trailing" secondItem="GyD-E3-GnA" secondAttribute="trailing" id="BUW-dt-TWR"/>
+                            <constraint firstItem="UMA-dF-5TL" firstAttribute="top" secondItem="Ef1-GF-tcy" secondAttribute="top" constant="20" symbolic="YES" id="QvK-bQ-gGh"/>
+                            <constraint firstItem="UMA-dF-5TL" firstAttribute="leading" secondItem="Ef1-GF-tcy" secondAttribute="leading" id="RfZ-0s-Sw1"/>
+                            <constraint firstItem="odP-5O-DQh" firstAttribute="top" secondItem="aKR-vY-vbh" secondAttribute="bottom" constant="155" id="UUT-o1-yfN"/>
+                            <constraint firstItem="odP-5O-DQh" firstAttribute="leading" secondItem="GyD-E3-GnA" secondAttribute="leading" id="cTL-z9-rOx"/>
+                            <constraint firstItem="GyD-E3-GnA" firstAttribute="bottom" secondItem="1Fy-tU-4im" secondAttribute="top" id="duS-rB-IdF"/>
+                            <constraint firstItem="UMA-dF-5TL" firstAttribute="leading" secondItem="odP-5O-DQh" secondAttribute="leading" id="hU0-GI-Bqe"/>
+                            <constraint firstAttribute="trailing" secondItem="UMA-dF-5TL" secondAttribute="trailing" id="tSu-eV-OVR"/>
+                            <constraint firstItem="GyD-E3-GnA" firstAttribute="top" secondItem="odP-5O-DQh" secondAttribute="bottom" id="tWO-5z-C4n"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="picsCollection" destination="odP-5O-DQh" id="TzO-6z-NBC"/>
                         <outlet property="pinMapView" destination="UMA-dF-5TL" id="d6w-Mg-gV0"/>
                     </connections>
                 </viewController>

@@ -7,11 +7,9 @@
 //
 
 import Foundation
-
 import UIKit
 
 // MARK: - Constants
-
 extension FlickrAPI {
     
     // MARK: Constants
@@ -50,6 +48,13 @@ extension FlickrAPI {
         static let GalleryID = "5704-72157622566655097"
         static let MediumURL = "url_m"
         static let UseSafeSearch = "1"
+        static let Page = 10
+        static let BOUNDING_BOX_HALF_WIDTH = 1.0
+        static let BOUNDING_BOX_HALF_HEIGHT = 1.0
+        static let LAT_MIN = -90.0
+        static let LAT_MAX = 90.0
+        static let LON_MIN = -180.0
+        static let LON_MAX = 180.0
     }
     
     // MARK: Flickr Response Keys

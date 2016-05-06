@@ -17,7 +17,7 @@ class Pin: NSManagedObject, MKAnnotation {
     // 3. Simple properties, to Core Data attributes
     @NSManaged var latitude: NSNumber
     @NSManaged var longitude: NSNumber
-    @NSManaged var hashNumber: NSNumber
+    @NSManaged var pageNumber: Int
     @NSManaged var photos: [Photo]
     
     let imageCache = ImageCache()

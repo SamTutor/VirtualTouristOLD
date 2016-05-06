@@ -15,6 +15,8 @@
 		04705F091CD512430053E9F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04705F081CD512430053E9F5 /* Assets.xcassets */; };
 		04705F0C1CD512430053E9F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04705F0A1CD512430053E9F5 /* LaunchScreen.storyboard */; };
 		04705F141CD521860053E9F5 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04705F131CD521860053E9F5 /* CoreDataStackManager.swift */; };
+		04E161A91CDBE925008DC3FC /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E161A81CDBE924008DC3FC /* GCDBlackBox.swift */; };
+		04E161AB1CDBECA3008DC3FC /* PinPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E161AA1CDBECA3008DC3FC /* PinPhotoCollectionViewCell.swift */; };
 		04E83F6C1CD5259A00EA9422 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E83F6B1CD5259A00EA9422 /* Pin.swift */; };
 		04E83F6E1CD5274400EA9422 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E83F6D1CD5274400EA9422 /* Photo.swift */; };
 		04E83F701CD52BB600EA9422 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E83F6F1CD52BB600EA9422 /* Constants.swift */; };
@@ -35,6 +37,8 @@
 		04705F0B1CD512430053E9F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04705F0D1CD512430053E9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04705F131CD521860053E9F5 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		04E161A81CDBE924008DC3FC /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		04E161AA1CDBECA3008DC3FC /* PinPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		04E83F6B1CD5259A00EA9422 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		04E83F6D1CD5274400EA9422 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		04E83F6F1CD52BB600EA9422 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				04705F001CD512420053E9F5 /* MapViewController.swift */,
 				046880D51CD7CFA40084F161 /* PinViewController.swift */,
 				04705F021CD512430053E9F5 /* Main.storyboard */,
+				04E161AA1CDBECA3008DC3FC /* PinPhotoCollectionViewCell.swift */,
 				04705F081CD512430053E9F5 /* Assets.xcassets */,
 				04705F0A1CD512430053E9F5 /* LaunchScreen.storyboard */,
 				04705F0D1CD512430053E9F5 /* Info.plist */,
@@ -108,6 +113,7 @@
 				04E83F6B1CD5259A00EA9422 /* Pin.swift */,
 				04E83F6D1CD5274400EA9422 /* Photo.swift */,
 				04E83F741CD56ED200EA9422 /* ImageCache.swift */,
+				04E161A81CDBE924008DC3FC /* GCDBlackBox.swift */,
 			);
 			name = Flickr;
 			sourceTree = "<group>";
@@ -187,11 +193,13 @@
 				04705F011CD512420053E9F5 /* MapViewController.swift in Sources */,
 				04705F141CD521860053E9F5 /* CoreDataStackManager.swift in Sources */,
 				04E83F751CD56ED200EA9422 /* ImageCache.swift in Sources */,
+				04E161A91CDBE925008DC3FC /* GCDBlackBox.swift in Sources */,
 				04705F071CD512430053E9F5 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				04E83F701CD52BB600EA9422 /* Constants.swift in Sources */,
 				04E83F6C1CD5259A00EA9422 /* Pin.swift in Sources */,
 				04705EFF1CD512420053E9F5 /* AppDelegate.swift in Sources */,
 				046880D61CD7CFA40084F161 /* PinViewController.swift in Sources */,
+				04E161AB1CDBECA3008DC3FC /* PinPhotoCollectionViewCell.swift in Sources */,
 				04E83F731CD52E7700EA9422 /* FlickrAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,7 +5,7 @@
 //  Created by Mac on 4/30/16.
 //  Copyright © 2016 STDESIGN. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 // 1. Import CoreData
@@ -22,7 +22,7 @@ class Photo : NSManagedObject {
     // 3. Simple properties, to Core Data attributes
     @NSManaged var url: String
     @NSManaged var id: String?
-    @NSManaged var location: Pin?
+    @NSManaged var pin: Pin?
     
     // 4. Include this standard Core Data init method.
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -36,7 +36,7 @@ class Photo : NSManagedObject {
      *  - insert the new Photo into a Core Data Managed Object Context
      *  - initialze the Photo's properties from a dictionary
      */
-    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+    init(pin: Pin, id: String, url: String, context: NSManagedObjectContext) {
         
         // Get the entity associated with the "Photo" type.  This is an object that contains
         // the information from the Virtual_Tourist.xcdatamodeld file.        
@@ -49,8 +49,9 @@ class Photo : NSManagedObject {
         
         // After the Core Data work has been taken care of we can init the properties from the
         // dictionary.
-        url = dictionary[Keys.Url] as! String
-        id = dictionary[Keys.Id] as? String
+        self.url = url
+        self.pin = pin
+        self.id = id + ".png"
     }
     
     var flickrImage: UIImage? {

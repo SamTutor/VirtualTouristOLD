@@ -57,11 +57,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
         locManager.startUpdatingLocation()
         locManager.delegate = self
         
-        self.mapView.showsUserLocation = true
+        self.mapView.showsUserLocation = false
         self.mapView.showsPointsOfInterest = true
         self.mapView.delegate = self
         
         self.mapView.addAnnotations(fetchAllPins())
+
     }// END OF FUNC
     
     
@@ -145,25 +146,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,  MKMapView
         }
 
         let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) //as? MKPinAnnotationView!
         
         if (pinView == nil) {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
+            //pinView!.animatesDrop = true
         
             if (annotation.title!! == startMessage) {
-                pinView!.pinTintColor = UIColor(red: 1.0, green:0.0, blue:0.0, alpha: 1.0)
+                pinView?.image = UIImage(named:"Start")!
+                
                 pinView!.leftCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                
                 let delButton = UIButton(type: UIButtonType.System) as UIButton
                 delButton.frame.size.width = 35
                 delButton.frame.size.height = 35
                 delButton.backgroundColor = UIColor.whiteColor()
                 delButton.setImage(UIImage(named: "Delete"), forState: .Normal)
+                
                 pinView!.rightCalloutAccessoryView = delButton
-          
+                
             } else {
-                pinView!.pinTintColor = UIColor.purpleColor()
+                //pinView!.pinTintColor = UIColor.purpleColor()
+                //pinView!.animatesDrop = false
+                pinView?.image = UIImage(named:"Camera")!
             }
         
         } else {
